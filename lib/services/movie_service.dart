@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:open_movie_app_mvvm/interfaces/IMovieService.dart';
 import 'package:open_movie_app_mvvm/models/movie.dart';
@@ -11,21 +13,24 @@ class BaseService {
   }
 }
 
-abstract class MovieService {
-  Future<http.Response> fetchMovieWithTitle({String title});
-  Future<http.Response> fetchListMovieWithTitle({String title});
-  Future<http.Response> fetchListMovie({String title});
-}
-
 class MovieServiceImpl extends BaseService implements IMovieService {
+
+  // static final MovieServiceImpl _internal = MovieServiceImpl.internal();
+  // factory MovieServiceImpl () => _internal;
+  // MovieServiceImpl.internal();
+
+
   @override
-  Future<List<Movie>> fetchMovieWithTitle(String title) {
+  Future<List<Movie>> fetchMovieWithTitle(String title) async {
     // TODO: implement fetchMovieWithTitle
 
-    // http.Response response = http.get(formURL("/?s=$title"));
+   var response = await http.get(formURL("/?s=$title"));
 
-    return null;
+   final body = jsonDecode(response.body); 
+       final Iterable json = body["Search"];
+       return json.map((movie) => Movie.fromMap(movie)).toList();
   }
+ 
  
   // @override
   // Future<http.Response> fetchListMovieWithTitle({String title}) async {
