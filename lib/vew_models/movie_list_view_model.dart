@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:open_movie_app_mvvm/vew_models/movie_view_model.dart';
-import 'package:open_movie_app_mvvm/services/movie_service.dart';
 import 'package:open_movie_app_mvvm/models/movie.dart';
 import 'package:open_movie_app_mvvm/interfaces/IMovieService.dart';
 

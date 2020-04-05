@@ -22,7 +22,6 @@ class MovieServiceImpl extends BaseService implements IMovieService {
 
   @override
   Future<List<Movie>> fetchMovieWithTitle(String title) async {
-    // TODO: implement fetchMovieWithTitle
 
    var response = await http.get(formURL("/?s=$title"));
 
@@ -40,12 +39,6 @@ class MovieServiceImpl extends BaseService implements IMovieService {
   // @override
   // Future<http.Response> fetchMovieWithTitle({String title}) {
   //   return http.get(formURL("/?t=$title"));
-  // }
-
-  // @override
-  // Future<http.Response> fetchListMovie({String title}) {
-  //   // TODO: implement fetchListMovie
-  //   // return ;
   // }
 
 
