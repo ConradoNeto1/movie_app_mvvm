@@ -32,14 +32,11 @@ class MoviesPanel extends StatelessWidget {
                         },
                       );
                     }else if (snapshot.hasError){
-                      return Container(
-                        width: 0.0,
-                        height: 0.0
-                      );
+                      return Container();
+                    }else{
+                      return Container();
                     }
                }
-            //builder: (_, AsyncSnapshot<List<Planet>> snapshot) {
-            
           },
         );
       },

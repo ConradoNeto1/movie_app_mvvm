@@ -23,11 +23,18 @@ class MovieServiceImpl extends BaseService implements IMovieService {
   @override
   Future<List<Movie>> fetchMovieWithTitle(String title) async {
 
+    Future<List<Movie>> result;
+
    var response = await http.get(formURL("/?s=$title"));
 
    final body = jsonDecode(response.body); 
        final Iterable json = body["Search"];
-       return json.map((movie) => Movie.fromMap(movie)).toList();
+
+        if(json != null){
+          return json.map((movie) => Movie.fromMap(movie)).toList();
+        }else{
+          return result;
+        }
   }
  
  

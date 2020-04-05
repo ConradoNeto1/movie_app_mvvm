@@ -13,17 +13,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   MovieListViewModel viewModel;
+  TextEditingController _titleController = TextEditingController();
 
 
-  Future loadData(String title) async {
-    await viewModel.setMovie(title);
+  Future loadData() async {
+    await viewModel.setMovie(_titleController.text);
   }
 
   @override
   void initState() {
     super.initState();
     viewModel = MovieListViewModel(api: MovieServiceImpl());
-    loadData("batman");
+    loadData();
   }
 
   
@@ -40,9 +41,37 @@ class _MyHomePageState extends State<MyHomePage> {
         model: viewModel, 
         child: Stack(
           children: <Widget>[
+              Container(
+                 padding: const EdgeInsets.only(top: 120, bottom: 8),
+                child: MoviesPanel()
+              ),
+              Container(
+                  padding: const EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 8),
+                  child: TextField(controller: _titleController,
+                  decoration: InputDecoration(
+                  labelText: "Title",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(4),
+                    )
+                  )
+                )
+              ),
+            ),
             Container(
-              child: MoviesPanel()
-            )
+            padding: const EdgeInsets.only(top: 64, bottom: 8, right: 8, left: 150),
+            child: RaisedButton(
+            onPressed: () {
+               loadData();
+            },
+            color: Colors.black,
+            textColor: Colors.white,
+            child: const Text(
+                'Search',
+                 style: TextStyle(fontSize: 20)
+              ),
+            ),
+          ),
           ],
         ),),
     );
