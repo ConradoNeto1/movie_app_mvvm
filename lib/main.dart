@@ -1,10 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:open_movie_app_mvvm/views/movie_list.dart';
+import 'package:open_movie_app_mvvm/onboarding/onboarding.dart';
 
 void main() => runApp( 
-  MaterialApp(debugShowCheckedModeBanner: false, home: MyHomePage()));
+  MaterialApp(debugShowCheckedModeBanner: false, home: OnboardingPage()));
 
 
 // import 'package:flutter/material.dart';
