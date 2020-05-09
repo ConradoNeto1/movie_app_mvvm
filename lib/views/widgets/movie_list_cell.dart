@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:open_movie_app_mvvm/models/movie.dart';
+import 'package:open_movie_app_mvvm/views/movie_details.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+
 
 class MovieListPageCell extends StatelessWidget {
   final Movie model;
 
-  MovieListPageCell({@required this.model});
+  MovieListPageCell({this.model});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-       
+       Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  MovieDetails(model)));
       },
       child: Stack(
          children: <Widget>[

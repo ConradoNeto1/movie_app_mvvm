@@ -17,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   Future loadData() async {
-    await viewModel.setMovie(_titleController.text);
+    await viewModel.setListMovies(_titleController.text);
   }
 
   @override

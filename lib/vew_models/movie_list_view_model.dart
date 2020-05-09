@@ -5,11 +5,17 @@ import 'package:open_movie_app_mvvm/models/movie.dart';
 import 'package:open_movie_app_mvvm/interfaces/IMovieService.dart';
 
 class MovieListViewModel extends Model {
-
   Future<List<Movie>> _movies;
-  Future<List<Movie>> get movie => _movies;
+  Future<List<Movie>> get movieList => _movies;
   set movies(Future<List<Movie>> value) {
     _movies = value;
+    notifyListeners();
+  }
+
+  Future<Movie> _movie;
+  Future<Movie> get movie => _movie;
+  set movieNow(Future<Movie> value) {
+    _movie = value;
     notifyListeners();
   }
 
@@ -17,8 +23,13 @@ class MovieListViewModel extends Model {
 
   MovieListViewModel({@required this.api});
 
+  Future<bool> setListMovies(String title) async {
+    movies = api?.fetchListMovieWithTitle(title);
+    return movieList != null;
+  }
+
   Future<bool> setMovie(String title) async {
-    movies = api?.fetchMovieWithTitle(title);
+    movieNow = api?.fetchMovieWithTitle(title);
     return movie != null;
   }
 }

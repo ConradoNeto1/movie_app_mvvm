@@ -10,7 +10,7 @@ class MoviesPanel extends StatelessWidget {
     return ScopedModelDescendant<MovieListViewModel>(
       builder: (context , child,  model) {
         return FutureBuilder<List<Movie>>(
-          future: model.movie,
+          future: model.movieList,
           builder: (_, AsyncSnapshot<List<Movie>> snapshot) {
                switch (snapshot.connectionState) {
 
