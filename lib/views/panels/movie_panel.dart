@@ -5,6 +5,7 @@ import 'package:open_movie_app_mvvm/views/widgets/movie_list_cell.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class MoviesPanel extends StatelessWidget {
+  final _scrollController = ScrollController();
    @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<MovieListViewModel>(
@@ -24,8 +25,12 @@ class MoviesPanel extends StatelessWidget {
                  case ConnectionState.done:
                    if(snapshot.hasData){
                       var movies = snapshot.data;
-                      return ListView.builder(
+                      return GridView.builder(
+                        controller: _scrollController,
                         itemCount: movies == null ? 0 : movies.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+							            crossAxisCount: MediaQuery.of(context).size.width < 600 ? 2 : 3,
+						            ),
                         itemBuilder: (_, int index) {
                             var movie = movies[index];
                             return MovieListPageCell(model: movie);
