@@ -17,23 +17,25 @@ class MovieListPageCell extends StatelessWidget {
        Navigator.of(context).push(MaterialPageRoute(
          builder: (context) =>  MovieDetails(model)));
       },
-      child: Stack(
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
          children: <Widget>[
            Center(
              child: Padding(
-               padding: const EdgeInsets.all(8.0),
+               padding: const EdgeInsets.all(2.0),
                child: Column(
                  children: <Widget>[
                  Text(model.title,
                  style: TextStyle(
                     color: Colors.black,
-                     fontSize: 18,
+                     fontSize: 14,
                      fontWeight: FontWeight.w500),),
                   FadeInImage.memoryNetwork(
                         placeholder: kTransparentImage,
                         image: model.poster,
                         width: 300,
-                        height: 300,
+                        height: 150,
                       ),
                 ],
           ),
@@ -41,7 +43,7 @@ class MovieListPageCell extends StatelessWidget {
            ),
         ], 
       )
-    );
+    ));
   }
 
 }
