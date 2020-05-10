@@ -12,13 +12,6 @@ class MovieListViewModel extends Model {
     notifyListeners();
   }
 
-  Future<Movie> _movie;
-  Future<Movie> get movie => _movie;
-  set movieNow(Future<Movie> value) {
-    _movie = value;
-    notifyListeners();
-  }
-
   final IMovieService api;
 
   MovieListViewModel({@required this.api});
@@ -27,9 +20,5 @@ class MovieListViewModel extends Model {
     movies = api?.fetchListMovieWithTitle(title);
     return movieList != null;
   }
-
-  Future<bool> setMovie(String title) async {
-    movieNow = api?.fetchMovieWithTitle(title);
-    return movie != null;
-  }
+  
 }

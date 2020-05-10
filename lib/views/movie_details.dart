@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:open_movie_app_mvvm/models/movie.dart';
+import 'package:open_movie_app_mvvm/services/movie_service.dart';
 import 'package:open_movie_app_mvvm/vew_models/movie_list_view_model.dart';
+import 'package:open_movie_app_mvvm/vew_models/movie_view_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import 'package:transparent_image/transparent_image.dart';
@@ -14,7 +16,7 @@ class MovieDetails extends StatefulWidget {
 }
 
 class _MovieDetailsState extends State<MovieDetails> {
-  MovieListViewModel viewModel;
+  MovieViewModel viewModel;
 
   Future loadData() async {
     await viewModel.setMovie(widget.model.title);
@@ -23,6 +25,7 @@ class _MovieDetailsState extends State<MovieDetails> {
   @override
   void initState() {
     super.initState();
+    viewModel = MovieViewModel(api: MovieServiceImpl());
     loadData();
   }
 
