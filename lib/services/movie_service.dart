@@ -15,11 +15,6 @@ class BaseService {
 
 class MovieServiceImpl extends BaseService implements IMovieService {
 
-  // static final MovieServiceImpl _internal = MovieServiceImpl.internal();
-  // factory MovieServiceImpl () => _internal;
-  // MovieServiceImpl.internal();
-
-
   @override
   Future<List<Movie>> fetchListMovieWithTitle(String title) async {
 
@@ -40,26 +35,10 @@ class MovieServiceImpl extends BaseService implements IMovieService {
   @override
   Future<Movie> fetchMovieWithTitle(String title) async {
 
-   var response = await http.get(formURL("/?s=$title"));
-   var body = jsonDecode(response.body); 
+    var response = await http.get(formURL("/?t=$title"));
+    var body = jsonDecode(response.body); 
 
-    // Movie movie = Movie(title: body.)
     return Movie.fromMap(body);
-
-    // return body;
   }
-
- 
- 
-  // @override
-  // Future<http.Response> fetchListMovieWithTitle({String title}) async {
-  //   return http.get(formURL("/?s=$title"));
-  // }
-
-  // @override
-  // Future<http.Response> fetchMovieWithTitle({String title}) {
-  //   return http.get(formURL("/?t=$title"));
-  // }
-
 
 }
