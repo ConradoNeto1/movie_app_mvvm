@@ -43,7 +43,10 @@ class MovieServiceImpl extends BaseService implements IMovieService {
    var response = await http.get(formURL("/?s=$title"));
    var body = jsonDecode(response.body); 
 
-    return body;
+    // Movie movie = Movie(title: body.)
+    return Movie.fromMap(body);
+
+    // return body;
   }
 
  

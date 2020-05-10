@@ -14,7 +14,8 @@ class MovieListPageCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-       Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  MovieDetails(model)));
+       Navigator.of(context).push(MaterialPageRoute(
+         builder: (context) =>  MovieDetails(model)));
       },
       child: Stack(
          children: <Widget>[
